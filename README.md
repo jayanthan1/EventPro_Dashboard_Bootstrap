@@ -31,16 +31,14 @@ A sleek, responsive event management dashboard built with **HTML**, **Bootstrap 
 
 ## 📸 Screenshots
 
-<img src="https://i.imgur.com/3NtIs6c.png" alt="Dashboard Screenshot" width="600"/>
+<img src="./26a3b339-c342-4978-9299-8d8fabe12459.png" alt="EventPro Dashboard Screenshot" width="800"/>
 
 ## 🚀 How to Use
 
 1. **Clone the repository**  
    ```bash
-   git clone https://github.com/your-username/eventpro-dashboard.git
-   cd eventpro-dashboard
-Open index.html in your browser
-No additional setup required — it's a static HTML project.
+   git clone https://github.com/jayanthan1/EventPro_Dashboard_Bootstrap.git
+   cd EventPro_Dashboard_Bootstrap
 
 📁 File Structure
 bash
