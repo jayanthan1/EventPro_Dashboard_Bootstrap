@@ -31,7 +31,8 @@ A sleek, responsive event management dashboard built with **HTML**, **Bootstrap 
 
 ## 📸 Screenshots
 
-<img src="./26a3b339-c342-4978-9299-8d8fabe12459.png" alt="EventPro Dashboard Screenshot" width="800"/>
+<img width="1891" height="993" alt="Screenshot 2025-07-22 212947" src="https://github.com/user-attachments/assets/a0ddb600-95d4-4550-8aef-4f227fc0f0f8" />
+
 
 ## 🚀 How to Use
 
