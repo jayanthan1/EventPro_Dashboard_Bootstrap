@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventPro Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6f42c1;
+            --secondary-color: #e83e8c;
+            --success-color: #20c997;
+            --warning-color: #fd7e14;
+        }
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .dashboard-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin: 20px;
+            padding: 30px;
+            min-height: 80vh;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, var(--card-color, #fff) 0%, rgba(255,255,255,0.8) 100%);
+            border: none;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .stat-card.primary { --card-color: #6f42c1; color: white; }
+        .stat-card.success { --card-color: #20c997; color: white; }
+        .stat-card.warning { --card-color: #fd7e14; color: white; }
+        .stat-card.info { --card-color: #17a2b8; color: white; }
+        .sidebar {
+            background: linear-gradient(180deg, #6f42c1 0%, #5a359a 100%);
+            border-radius: 15px;
+            color: white;
+        }
+        .sidebar .nav-link {
+            color: rgba(255,255,255,0.8);
+            border-radius: 10px;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+        .sidebar .nav-link:hover, .sidebar .nav-link.active {
+            color: white;
+            background: rgba(255,255,255,0.2);
+        }
+        .event-card {
+            border: none;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        .event-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        @media (max-width: 768px) {
+            .dashboard-container { margin: 10px; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3 mb-4">
+                <div class="sidebar p-4">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-calendar-alt fa-3x mb-3"></i>
+                        <h4>EventPro</h4>
+                        <small>Event Management System</small>
+                    </div>
+                    <nav class="nav flex-column">
+                        <a class="nav-link active" href="#"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
+                        <a class="nav-link" href="#"><i class="fas fa-calendar me-2"></i>Events</a>
+                        <a class="nav-link" href="#"><i class="fas fa-users me-2"></i>Attendees</a>
+                        <a class="nav-link" href="#"><i class="fas fa-chart-bar me-2"></i>Analytics</a>
+                        <a class="nav-link" href="#"><i class="fas fa-cog me-2"></i>Settings</a>
+                    </nav>
+                </div>
+            </div>
+            <!-- Main Content -->
+            <div class="col-lg-9">
+                <!-- Sidebar navigation toggles content -->
+                <div id="dashboard-section" class="content-section">
+                    <!-- Header -->
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                            <h2>Dashboard Overview</h2>
+                            <p class="text-muted mb-0">Welcome back, Sarah! Here's what's happening with your events.</p>
+                        </div>
+                        <button class="btn btn-primary rounded-pill px-4">
+                            <i class="fas fa-plus me-2"></i>New Event
+                        </button>
+                    </div>
+                    <!-- Stats Cards -->
+                    <div class="row mb-4">
+                        <div class="col-md-3 mb-3">
+                            <div class="card stat-card primary">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-calendar-check fa-2x mb-3"></i>
+                                    <h3>24</h3>
+                                    <p class="mb-0">Total Events</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="card stat-card success">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-users fa-2x mb-3"></i>
+                                    <h3>1,252</h3>
+                                    <p class="mb-0">Total Attendees</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="card stat-card warning">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-clock fa-2x mb-3"></i>
+                                    <h3>8</h3>
+                                    <p class="mb-0">Upcoming Events</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="card stat-card info">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-dollar-sign fa-2x mb-3"></i>
+                                    <h3>$52,340</h3>
+                                    <p class="mb-0">Revenue</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Recent Events -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card mb-4">
+                                <div class="card-header bg-white border-0 pb-0">
+                                    <h5 class="mb-0">Recent Events</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <div class="card event-card h-100">
+                                                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=200&fit=crop" class="card-img-top" style="height: 150px; object-fit: cover;" alt="Tech Innovation Summit 2024 banner">
+                                                <div class="card-body">
+                                                    <h6 class="card-title">Tech Innovation Summit 2024</h6>
+                                                    <p class="card-text text-muted small mb-2">
+                                                        <i class="fas fa-calendar me-1"></i>8/15/2024<br>
+                                                        <i class="fas fa-map-marker-alt me-1"></i>San Francisco Convention Center
+                                                    </p>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <small class="text-muted">
+                                                            <i class="fas fa-users me-1"></i>245 attendees
+                                                        </small>
+                                                        <span class="event-status status-confirmed">CONFIRMED</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <div class="card event-card h-100">
+                                                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" class="card-img-top" style="height: 150px; object-fit: cover;" alt="Digital Marketing Masterclass banner">
+                                                <div class="card-body">
+                                                    <h6 class="card-title">Digital Marketing Masterclass</h6>
+                                                    <p class="card-text text-muted small mb-2">
+                                                        <i class="fas fa-calendar me-1"></i>8/22/2024<br>
+                                                        <i class="fas fa-map-marker-alt me-1"></i>Online Event
+                                                    </p>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <small class="text-muted">
+                                                            <i class="fas fa-users me-1"></i>89 attendees
+                                                        </small>
+                                                        <span class="event-status status-pending">PENDING</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Upcoming Events Section -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card mb-4">
+                                <div class="card-header bg-white border-0 pb-0">
+                                    <h5 class="mb-0">Upcoming Events</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row g-3">
+                                        <div class="col-12 col-md-6 col-lg-4">
+                                            <div class="card h-100 shadow-sm">
+                                                <div class="card-body d-flex flex-column">
+                                                    <h6 class="card-title mb-2">Startup Pitch Competition</h6>
+                                                    <p class="card-text text-muted mb-1"><i class="fas fa-calendar me-1"></i>8/8/2024</p>
+                                                    <p class="card-text text-muted mb-2"><i class="fas fa-map-marker-alt me-1"></i>WeWork Downtown</p>
+                                                    <a href="#" class="btn btn-outline-primary mt-auto w-100">View Details</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6 col-lg-4">
+                                            <div class="card h-100 shadow-sm">
+                                                <div class="card-body d-flex flex-column">
+                                                    <h6 class="card-title mb-2">UX/UI Design Workshop</h6>
+                                                    <p class="card-text text-muted mb-1"><i class="fas fa-calendar me-1"></i>7/28/2024</p>
+                                                    <p class="card-text text-muted mb-2"><i class="fas fa-map-marker-alt me-1"></i>Design Hub</p>
+                                                    <a href="#" class="btn btn-outline-primary mt-auto w-100">View Details</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6 col-lg-4">
+                                            <div class="card h-100 shadow-sm">
+                                                <div class="card-body d-flex flex-column">
+                                                    <h6 class="card-title mb-2">AI & Machine Learning Conference</h6>
+                                                    <p class="card-text text-muted mb-1"><i class="fas fa-calendar me-1"></i>9/5/2024</p>
+                                                    <p class="card-text text-muted mb-2"><i class="fas fa-map-marker-alt me-1"></i>Virtual</p>
+                                                    <a href="#" class="btn btn-outline-primary mt-auto w-100">View Details</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Events Section -->
+                <div id="events-section" class="content-section d-none">
+                    <h2 class="mb-4">Events</h2>
+                    <div class="table-responsive">
+                        <table class="table table-striped align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Event Name</th>
+                                    <th>Date</th>
+                                    <th>Location</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Tech Innovation Summit 2024</td>
+                                    <td>8/15/2024</td>
+                                    <td>San Francisco Convention Center</td>
+                                    <td><span class="badge bg-success">Confirmed</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Digital Marketing Masterclass</td>
+                                    <td>8/22/2024</td>
+                                    <td>Online Event</td>
+                                    <td><span class="badge bg-warning text-dark">Pending</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Startup Pitch Competition</td>
+                                    <td>8/8/2024</td>
+                                    <td>WeWork Downtown</td>
+                                    <td><span class="badge bg-success">Confirmed</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- Attendees Section -->
+                <div id="attendees-section" class="content-section d-none">
+                    <h2 class="mb-4">Attendees</h2>
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Sarah Johnson <span class="badge bg-primary rounded-pill">Registered</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Michael Lee <span class="badge bg-success rounded-pill">Checked In</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Priya Patel <span class="badge bg-warning text-dark rounded-pill">Pending</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Analytics Section -->
+                <div id="analytics-section" class="content-section d-none">
+                    <h2 class="mb-4">Analytics</h2>
+                    <div class="alert alert-info">Analytics charts and insights will appear here.</div>
+                    <div class="text-center">
+                        <i class="fas fa-chart-bar fa-4x text-secondary"></i>
+                    </div>
+                </div>
+                <!-- Settings Section -->
+                <div id="settings-section" class="content-section d-none">
+                    <h2 class="mb-4">Settings</h2>
+                    <form class="row g-3">
+                        <div class="col-md-6">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" value="Sarah">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" value="sarah@email.com">
+                        </div>
+                        <div class="col-12">
+                            <label for="theme" class="form-label">Theme</label>
+                            <select class="form-select" id="theme">
+                                <option selected>Light</option>
+                                <option>Dark</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+<script>
+// Sidebar navigation toggles content
+const navLinks = document.querySelectorAll('.sidebar .nav-link');
+const sections = document.querySelectorAll('.content-section');
+navLinks.forEach((link, idx) => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        navLinks.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+        sections.forEach(s => s.classList.add('d-none'));
+        if(idx === 0) document.getElementById('dashboard-section').classList.remove('d-none');
+        if(idx === 1) document.getElementById('events-section').classList.remove('d-none');
+        if(idx === 2) document.getElementById('attendees-section').classList.remove('d-none');
+        if(idx === 3) document.getElementById('analytics-section').classList.remove('d-none');
+        if(idx === 4) document.getElementById('settings-section').classList.remove('d-none');
+    });
+});
+</script>
+</body>
+</html>
